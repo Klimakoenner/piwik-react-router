@@ -237,7 +237,7 @@ var PiwikTracker = function(opts) {
 			g.defer=true;
 			g.async=true;
 			g.src=u+opts.clientTrackerName;
-			s.parentNode.insertBefore(g, s);
+			d.getElementsByTagName('body')[0].insertBefore(g,s);
 		}
 	})();
 
