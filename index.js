@@ -232,16 +232,17 @@ var PiwikTracker = function(opts) {
 		if (opts.injectScript && !alreadyInitialized) {
 			var d=document;
 			var g=d.createElement('script');
-			var body=d.getElementsByTagName('body')[0];
-			var s=body.getElementsByTagName('script')[0];
+			var s=d.getElementsByTagName('script')[0];
+
 			g.type='text/javascript';
 			g.defer=true;
 			g.async=true;
 			g.src=u+opts.clientTrackerName;
 			
 			if (s) {
-				body.insertBefore(g, s);
+				s.parentNode.insertBefore(g,s)
 			} else {
+				var body=d.getElementsByTagName('body')[0];
 				body.appendChild(g);
 			}
 		}
