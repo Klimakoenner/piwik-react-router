@@ -1,7 +1,6 @@
 'use strict';
 
 var warning = require('warning');
-var urljoin = require('url-join');
 
 // api shim. used for serverside rendering and misconfigured tracker instances
 var apiShim = {
@@ -104,9 +103,9 @@ var PiwikTracker = function(opts) {
 		if (loc.path) {
 			currentPath = loc.path;
 		} else if (loc.basename) {
-			currentPath = urljoin(loc.basename, loc.pathname, loc.search);
+			currentPath = loc.basename + loc.pathname + loc.search;
 		} else {
-			currentPath = urljoin(loc.pathname, loc.search);
+			currentPath = loc.pathname + loc.search;
 		}
 
 		if (previousPath === currentPath) {
